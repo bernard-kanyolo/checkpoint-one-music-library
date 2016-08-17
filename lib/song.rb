@@ -48,4 +48,8 @@ class Song
   def self.create(name)
     Song.new(name).save
   end
+
+  def self.find_by_name(name)
+    @@all.select {|song| song.name == name }.first
+  end
 end
