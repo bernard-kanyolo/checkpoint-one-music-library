@@ -1,12 +1,25 @@
+require_relative "artist"
+
 class Song
 
   @@all = []
 
-  def initialize(name)
+  def initialize(name, artist = nil)
     @name = name
+    @artist = artist
+    if artist
+      artist.add_song(self) unless artist.songs.include?(self)
+    end
   end
 
   attr_accessor :name
+  attr_reader :artist
+
+  # setter for artist
+  def artist=(artist)
+    @artist = artist
+    artist.add_song(self)
+  end
 
   def self.all
     @@all
