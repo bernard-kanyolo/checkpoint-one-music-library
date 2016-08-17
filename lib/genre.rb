@@ -26,4 +26,8 @@ class Genre
   def self.create(name)
     Genre.new(name).save
   end
+
+  def artists
+    @songs.collect{|song| song.artist }.uniq
+  end
 end
