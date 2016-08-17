@@ -4,6 +4,6 @@ module Concerns::Findable
   end
 
   def find_or_create_by_name(name)
-    create(name) unless find_by_name(name) == nil
+    find_by_name(name) || create(name)
   end
 end
