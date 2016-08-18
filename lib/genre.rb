@@ -25,7 +25,8 @@ class Genre
   end
 
   def self.create(name)
-    Genre.new(name).save
+    @@all.detect { |genre| genre.name == name} ||
+        Genre.new(name).save
   end
 
   def artists

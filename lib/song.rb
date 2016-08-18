@@ -1,5 +1,3 @@
-#require_relative "artist"
-
 class Song
   extend Concerns::Findable
 
@@ -46,8 +44,18 @@ class Song
     @@all.clear
   end
 
-  def self.create(name)
-    Song.new(name).save
+  def self.create(name, artist = nil, genre = nil)
+    Song.new(name, artist, genre).save
+  end
+
+  def self.new_from_filename(filename)
+    artist, name, genre = filename.chomp('.mp3').split('-').collect { |e| e.strip }
+    Song.new(name, Artist.create(artist), Genre.create(genre))
+  end
+
+  def self.create_from_filename(filename)
+    artist, name, genre = filename.chomp('.mp3').split('-').collect { |e| e.strip }
+    Song.create(name, Artist.create(artist), Genre.create(genre))
   end
 
 end
