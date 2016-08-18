@@ -54,8 +54,7 @@ class Song
   end
 
   def self.create_from_filename(filename)
-    artist, name, genre = filename.chomp('.mp3').split('-').collect { |e| e.strip }
-    Song.create(name, Artist.create(artist), Genre.create(genre))
+    Song.new_from_filename(filename).save
   end
 
 end
