@@ -14,22 +14,14 @@ class MusicLibraryController
      command = gets.strip.chomp.downcase
 
      case command
-     when 'exit'
-       break
-     when 'list songs'
-       list_songs
-     when 'list artists'
-       list_artists
-     when 'list genres'
-       list_genres
-     when 'play song'
-       play_song
-     when 'list artist'
-       list_artist
-     when 'list genre'
-       list_genre
-     else
-       puts "No such command available"
+     when 'exit' then break
+     when 'list songs' then list_songs
+     when 'list artists' then list_artists
+     when 'list genres' then list_genres
+     when 'play song' then play_song
+     when 'list artist' then list_artist
+     when 'list genre' then list_genre
+     else puts "No such command available"
      end
    end
   end
@@ -49,10 +41,9 @@ class MusicLibraryController
 
   def play_song
     print "Which song would you like to play? "
-    num = gets.strip.chomp
-    song_num = num.to_i
-    if (1..Song.all.length).include?(song_num)
-      song = Song.all[song_num - 1]
+    num = gets.strip.chomp.to_i
+    if (1..Song.all.length).include?(num)
+      song = Song.all[num - 1]
       puts "Playing #{song.artist.name} - #{song.name} - #{song.genre.name}"
     else
       puts "Please enter a valid song number between 1 and #{Song.all.length}"
