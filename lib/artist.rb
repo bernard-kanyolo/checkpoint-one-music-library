@@ -25,8 +25,7 @@ class Artist
   end
 
   def self.create(name)
-    @@all.detect { |artist| artist.name == name} ||
-        Artist.new(name).save
+    @@all.detect { |artist| artist.name == name } || Artist.new(name).save
   end
 
   def add_song(song)

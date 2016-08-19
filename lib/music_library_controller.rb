@@ -10,22 +10,23 @@ class MusicLibraryController
 
   def get_input
    while true
-     puts "Command me > "
+     print "Command me > "
      command = gets.strip.chomp.downcase
 
-     if command == 'exit'
+     case command
+     when 'exit'
        break
-     elsif command == 'list songs'
+     when 'list songs'
        list_songs
-     elsif command == 'list artists'
+     when 'list artists'
        list_artists
-     elsif command == 'list genres'
+     when 'list genres'
        list_genres
-     elsif command == 'play song'
+     when 'play song'
        play_song
-     elsif command == 'list artist'
+     when 'list artist'
        list_artist
-     elsif command == 'list genre'
+     when 'list genre'
        list_genre
      else
        puts "No such command available"
@@ -39,18 +40,18 @@ class MusicLibraryController
   end
 
   def list_artists
-    Artist.all.each{ |artist| puts "#{artist.name}" }
+    Artist.all.each{ |artist| puts artist.name }
   end
 
   def list_genres
-    Genre.all.each{ |genre| puts "#{genre.name}" }
+    Genre.all.each{ |genre| puts genre.name }
   end
 
   def play_song
     print "Which song would you like to play? "
     num = gets.strip.chomp
     song_num = num.to_i
-    if song_num > 0 && song_num <= Song.all.length
+    if (1..Song.all.length).include?(song_num)
       song = Song.all[song_num - 1]
       puts "Playing #{song.artist.name} - #{song.name} - #{song.genre.name}"
     else
