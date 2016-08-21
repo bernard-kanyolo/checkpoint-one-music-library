@@ -6,7 +6,7 @@ class MusicImporter
   end
 
   def files
-    Dir.entries(@path).select { |dir| dir.chomp.end_with?(".mp3") }
+    Dir.entries(@path).select { |dir| dir.end_with?(".mp3") }
   end
 
   def import
