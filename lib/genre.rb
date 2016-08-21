@@ -29,6 +29,6 @@ class Genre
   end
 
   def artists
-    @songs.collect(&:artist).uniq
+    @songs.map(&:artist).uniq
   end
 end
