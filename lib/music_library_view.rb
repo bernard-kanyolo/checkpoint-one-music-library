@@ -1,19 +1,24 @@
 class MusicLibraryView
+  require "colorize"
+
   def home
-    puts "-- Welcome to Empty Player --".center(30)
-    puts "-- Available Commands --"
+    welcome = "Welcome to Empty Player"
+    puts "\n\n"
+    puts "-".black.on_white * 80
+    puts "#{'-' * 27} #{welcome} #{'-' * 28}".black.on_white.center(80)
+    puts "-".black.on_white * 80
   end
 
   def prompt(type = nil)
     case type
-    when :play_song then print "Which song number would you like to play? "
-    when :list_artist then print "Which artist's songs would you like to view? "
-    when :list_genre then print "Which genre's songs would you like to view? "
-    else print "Empty Player > "
+    when :play_song then print "Which song number would you like to play? ".light_green
+    when :list_artist then print "Which artist's songs would you like to view? ".light_green
+    when :list_genre then print "Which genre's songs would you like to view? ".light_green
+    else print "Empty Player > ".green
     end
   end
 
-  def list_song (song, context = nil, i = 0)
+  def list_song(song, context = nil, i = 0)
     case context
     when :numbered
       puts "#{i + 1}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
@@ -34,18 +39,21 @@ class MusicLibraryView
 
   def input_error(context = nil, model = nil)
     case context
-    when :number then puts "Invalid song number entered"
-    when :exist then puts "No such #{model} exists in the music library"
-    when :none then puts "Sorry there are no songs in the music library"
-    else puts "No such command available"
+    when :number then puts "Invalid song number entered".red
+    when :exist then puts "No such #{model} exists in the music library".red
+    when :none then puts "Sorry there are no songs in the music library".red
+    else puts "No such command available".red
     end
   end
 
-  def help
-    puts "Available commands: "
+  def help(commands)
+    puts "\n\n"
+    puts "-- Available Commands --".light_cyan.underline.center(80)
+    commands.each_key { |key| puts key.light_blue.center(80) }
+    puts ""
   end
 
   def exit
-    puts "Thank you for using Empty Player. GoodBye!"
+    puts "Thank you for using Empty Player. GoodBye!".light_cyan
   end
 end

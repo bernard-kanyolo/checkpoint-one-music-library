@@ -16,6 +16,7 @@ class MusicLibraryController
 
   def call
     @view.home
+    help
     command = nil
     until command == "exit"
       @view.prompt
@@ -25,15 +26,15 @@ class MusicLibraryController
   end
 
   def list_songs
-    Song.all.each_with_index { |song, i| @view.list_song(song, :numbered, i)}
+    Song.all.each_with_index { |song, i| @view.list_song(song, :numbered, i) }
   end
 
   def list_artists
-    Artist.all.each { |artist| @view.list_artist(artist)}
+    Artist.all.each { |artist| @view.list_artist(artist) }
   end
 
   def list_genres
-    Genre.all.each { |genre| @view.list_genre(genre)}
+    Genre.all.each { |genre| @view.list_genre(genre) }
   end
 
   def play_song
@@ -47,7 +48,7 @@ class MusicLibraryController
   end
 
   def fetch_song(num)
-    if Song.all.length == 0
+    if Song.all.empty?
       @view.input_error(:none)
     elsif (1..Song.all.length).cover?(num)
       @view.list_song(Song.all[num - 1], :playing)
@@ -60,7 +61,7 @@ class MusicLibraryController
     @view.prompt(:list_artist)
     artist = Artist.find_by_name(gets.chomp.strip)
     if artist
-      artist.songs.each { |song| @view.list_song(song)}
+      artist.songs.each { |song| @view.list_song(song) }
     else
       @view.input_error(:exist, "artist")
     end
@@ -70,7 +71,7 @@ class MusicLibraryController
     @view.prompt(:list_genre)
     genre = Genre.find_by_name(gets.chomp.strip)
     if genre
-      genre.songs.each { |song| @view.list_song(song)}
+      genre.songs.each { |song| @view.list_song(song) }
     else
       @view.input_error(:exist, "genre")
     end
@@ -81,7 +82,7 @@ class MusicLibraryController
   end
 
   def help
-    @view.help
+    @view.help(COMMANDS)
   end
 
   def input_error
