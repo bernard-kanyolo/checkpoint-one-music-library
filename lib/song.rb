@@ -41,10 +41,15 @@ class Song
   end
 
   def self.new_from_filename(filename)
-    artist, name, genre = filename.chomp('.mp3').split(' - ').collect(&:strip)
-    artist = Artist.find_or_create_by_name(artist)
-    genre = Genre.find_or_create_by_name(genre)
-    Song.new(name, artist, genre)
+    details = filename.chomp(".mp3").split(" - ").map(&:strip)
+    if details.size == 3
+      artist, name, genre = details
+      artist = Artist.find_or_create_by_name(artist)
+      genre = Genre.find_or_create_by_name(genre)
+      Song.new(name, artist, genre)
+    else
+      Song.new(filename, nil, nil)
+    end
   end
 
   def self.create_from_filename(filename)
