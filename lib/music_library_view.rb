@@ -1,69 +1,51 @@
 class MusicLibraryView
   def home
-    puts "-- Welcome to Fake Player --"
+    puts "-- Welcome to Empty Player --".center(30)
     puts "-- Available Commands --"
-    puts
   end
 
-  def prompt(type="")
+  def prompt(type = nil)
     case type
-    when "play_song" then print "Which song would you like to play? "
-    when "list_artist" then print "Which artist's songs would you like to view? "
-    when "list_genre" then print "Which genre's songs would you like to view? "
-    else print "Fake Player > "
+    when :play_song then print "Which song number would you like to play? "
+    when :list_artist then print "Which artist's songs would you like to view? "
+    when :list_genre then print "Which genre's songs would you like to view? "
+    else print "Empty Player > "
     end
   end
 
-  def default
-    puts "No such command available"
-  end
-
-  def list_songs
-    Song.all.each_with_index do |song, i|
+  def list_song (song, context = nil, i = 0)
+    case context
+    when :numbered
       puts "#{i + 1}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
-    end
-  end
-
-  def list_artists
-    Artist.all.each { |artist| puts artist.name }
-  end
-
-  def list_genres
-    Genre.all.each { |genre| puts genre.name }
-  end
-
-  def play_song(num)
-    if (1..Song.all.length).include?(num)
-      song = Song.all[num - 1]
+    when :playing
       puts "Playing #{song.artist.name} - #{song.name} - #{song.genre.name}"
     else
-      puts "Please enter a valid song number between 1 and #{Song.all.length}"
+      puts "#{song.artist.name} - #{song.name} - #{song.genre.name}"
     end
   end
 
   def list_artist(artist)
-    artist = Artist.find_by_name(artist)
-    if artist
-      artist.songs.each do |song|
-        puts "#{song.artist.name} - #{song.name} - #{song.genre.name}"
-      end
-    else
-      puts "No such artist exists in the music library"
-    end
+    puts artist.name
   end
 
   def list_genre(genre)
-    genre = Genre.find_by_name(genre)
-    if genre
-      genre.songs.each do |song|
-        puts "#{song.artist.name} - #{song.name} - #{song.genre.name}"
-      end
-    else
-      puts "No such genre exists in the music library"
+    puts genre.name
+  end
+
+  def input_error(context = nil, model = nil)
+    case context
+    when :number then puts "Invalid song number entered"
+    when :exist then puts "No such #{model} exists in the music library"
+    when :none then puts "Sorry there are no songs in the music library"
+    else puts "No such command available"
     end
   end
 
+  def help
+    puts "Available commands: "
+  end
+
   def exit
-    puts "Thank you for using Fake Player. GoodBye!"
+    puts "Thank you for using Empty Player. GoodBye!"
   end
 end
