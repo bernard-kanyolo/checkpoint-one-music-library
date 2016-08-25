@@ -10,18 +10,26 @@ class MusicLibraryController
                "play song" => :play_song,
                "list artist" => :list_artist,
                "list genre" => :list_genre,
-               "exit" => :exit,
-               "help" => :help }
+               "help" => :help,
+               "exit" => :exit }
   COMMANDS.default = :input_error
 
   def call
     @view.home
-    help
-    command = nil
-    until command == "exit"
-      @view.prompt
-      command = gets.chomp.strip.downcase
-      send(COMMANDS[command])
+    @view.help(COMMANDS)
+    input
+  end
+
+  def input
+    begin
+      command = nil
+      until command == "exit"
+        @view.prompt
+        command = gets.chomp.strip.downcase
+        send(COMMANDS[command])
+      end
+    rescue Interrupt
+      @view.exit
     end
   end
 

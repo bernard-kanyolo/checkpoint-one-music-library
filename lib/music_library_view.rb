@@ -5,7 +5,7 @@ class MusicLibraryView
     welcome = "Welcome to Empty Player"
     puts "\n\n"
     puts "-".black.on_white * 80
-    puts "#{'-' * 27} #{welcome} #{'-' * 28}".black.on_white.center(80)
+    puts "#{" " * 27} #{welcome} #{" " * 28}".black.on_white.center(80)
     puts "-".black.on_white * 80
   end
 
@@ -47,7 +47,7 @@ class MusicLibraryView
   end
 
   def help(commands)
-    puts "\n\n"
+    puts ""
     puts "-- Available Commands --".light_cyan.underline.center(80)
     commands.each_key { |key| puts key.light_blue.center(80) }
     puts ""
