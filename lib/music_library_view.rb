@@ -11,10 +11,14 @@ class MusicLibraryView
 
   def prompt(type = nil)
     case type
-    when :play_song then print "Which song number would you like to play? ".light_green
-    when :list_artist then print "Which artist's songs would you like to view? ".light_green
-    when :list_genre then print "Which genre's songs would you like to view? ".light_green
-    else print "Empty Player > ".green
+    when :play_song
+      print "Which song number would you like to play? ".light_green
+    when :list_artist
+      print "Which artist's songs would you like to view? ".light_green
+    when :list_genre
+      print "Which genre's songs would you like to view? ".light_green
+    else
+      print "Empty Player > ".green
     end
   end
 
