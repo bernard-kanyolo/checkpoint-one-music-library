@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/andela-bkanyolo/checkpoint-one-music-library.svg?branch=develop)](https://travis-ci.org/andela-bkanyolo/checkpoint-one-music-library)
+
 # Fake Player
 
 ## Overview
