@@ -1,4 +1,8 @@
 [![Build Status](https://travis-ci.org/andela-bkanyolo/checkpoint-one-music-library.svg?branch=develop)](https://travis-ci.org/andela-bkanyolo/checkpoint-one-music-library)
+[![Code Climate](https://codeclimate.com/github/andela-bkanyolo/checkpoint-one-music-library/badges/gpa.svg)](https://codeclimate.com/github/andela-bkanyolo/checkpoint-one-music-library)
+[![Test Coverage](https://codeclimate.com/github/andela-bkanyolo/checkpoint-one-music-library/badges/coverage.svg)](https://codeclimate.com/github/andela-bkanyolo/checkpoint-one-music-library/coverage)
+[![Issue Count](https://codeclimate.com/github/andela-bkanyolo/checkpoint-one-music-library/badges/issue_count.svg)](https://codeclimate.com/github/andela-bkanyolo/checkpoint-one-music-library)
+
 
 # Fake Player
 
