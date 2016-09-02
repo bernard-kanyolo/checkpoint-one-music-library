@@ -9,18 +9,18 @@ class BaseModel
 
   class << self
     attr_reader :all
+
+    def destroy_all
+      all.clear
+    end
+
+    def create(name)
+      new(name).save
+    end  
   end
 
   def save
     self.class.all << self
     self
-  end
-
-  def self.destroy_all
-    all.clear
-  end
-
-  def self.create(name)
-    new(name).save
   end
 end
