@@ -9,8 +9,8 @@ class MusicLibraryView
     puts '-'.black.on_white * 80
   end
 
-  def prompt(type = nil)
-    case type
+  def prompt(context = nil)
+    case context
     when :play_song
       print 'Which song number would you like to play? '.light_green
     when :list_artist
