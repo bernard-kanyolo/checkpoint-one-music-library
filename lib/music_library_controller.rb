@@ -21,16 +21,14 @@ class MusicLibraryController
   end
 
   def input
-    begin
-      command = nil
-      until command == 'exit'
-        @view.prompt
-        command = gets.chomp.strip.downcase
-        send(COMMANDS[command])
-      end
-    rescue Interrupt
-      @view.exit
+    command = nil
+    until command == 'exit'
+      @view.prompt
+      command = gets.chomp.strip.downcase
+      send(COMMANDS[command])
     end
+  rescue Interrupt
+    @view.exit
   end
 
   def list_songs
