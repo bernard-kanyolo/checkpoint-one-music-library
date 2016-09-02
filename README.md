@@ -13,14 +13,14 @@ imports all the mp3 files into its library.
 
 ## Available Commands
 
-- list songs - List all the songs in the music library
-- list artists - List all the artists in the music library
-- list genres - List all the genres in the music library
-- play song - Play a song by specifying its number
-- list artist - List all the songs in the library for specified artist
-- list genre - List all the songs in the library for the specified genre
-- help - List all the available commands
-- exit - Close and exit the application
+- ```list songs``` - List all the songs in the music library
+- ```list artists``` - List all the artists in the music library
+- ```list genres``` - List all the genres in the music library
+- ```play song``` - Play a song by specifying its number
+- ```list artist``` - List all the songs in the library for specified artist
+- ```list genre``` - List all the songs in the library for the specified genre
+- ```help``` - List all the available commands
+- ```exit``` - Close and exit the application
 
 ## Installation, setup and running
 - You'll need ruby installed and the ruby gem ```bundle``` 
