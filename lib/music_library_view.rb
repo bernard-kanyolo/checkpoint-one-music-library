@@ -1,24 +1,24 @@
 class MusicLibraryView
-  require "colorize"
+  require 'colorize'
 
   def home
-    welcome = "Welcome to Empty Player"
+    welcome = 'Welcome to Empty Player'
     puts "\n\n"
-    puts "-".black.on_white * 80
-    puts "#{" " * 27} #{welcome} #{" " * 28}".black.on_white.center(80)
-    puts "-".black.on_white * 80
+    puts '-'.black.on_white * 80
+    puts "#{' ' * 27} #{welcome} #{' ' * 28}".black.on_white.center(80)
+    puts '-'.black.on_white * 80
   end
 
   def prompt(type = nil)
     case type
     when :play_song
-      print "Which song number would you like to play? ".light_green
+      print 'Which song number would you like to play? '.light_green
     when :list_artist
       print "Which artist's songs would you like to view? ".light_green
     when :list_genre
       print "Which genre's songs would you like to view? ".light_green
     else
-      print "Empty Player > ".green
+      print 'Empty Player > '.green
     end
   end
 
@@ -43,21 +43,21 @@ class MusicLibraryView
 
   def input_error(context = nil, model = nil)
     case context
-    when :number then puts "Invalid song number entered".red
+    when :number then puts 'Invalid song number entered'.red
     when :exist then puts "No such #{model} exists in the music library".red
-    when :none then puts "Sorry there are no songs in the music library".red
-    else puts "No such command available".red
+    when :none then puts 'Sorry there are no songs in the music library'.red
+    else puts 'No such command available'.red
     end
   end
 
   def help(commands)
-    puts ""
-    puts "-- Available Commands --".light_cyan.underline.center(80)
+    puts ''
+    puts '-- Available Commands --'.light_cyan.underline.center(80)
     commands.each_key { |key| puts key.light_blue.center(80) }
-    puts ""
+    puts ''
   end
 
   def exit
-    puts "Thank you for using Empty Player. GoodBye!".light_cyan
+    puts 'Thank you for using Empty Player. GoodBye!'.light_cyan
   end
 end

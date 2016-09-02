@@ -1,7 +1,7 @@
 class BaseModel
-  @all = []
-
   attr_accessor :name
+
+  @all = []
 
   def initialize(name)
     @name = name
@@ -16,7 +16,7 @@ class BaseModel
 
     def create(name)
       new(name).save
-    end  
+    end
   end
 
   def save

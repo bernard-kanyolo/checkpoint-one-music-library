@@ -1,7 +1,7 @@
 module Concerns
   module Findable
     def find_by_name(name)
-      all.find { |findable| findable.name.casecmp(name).zero? }
+      all.find { |model| model.name.casecmp(name).zero? }
     end
 
     def find_or_create_by_name(name)

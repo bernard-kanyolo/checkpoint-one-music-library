@@ -9,7 +9,7 @@ class Genre < BaseModel
     super(name)
     @songs = []
   end
-  
+
   def artists
     @songs.map(&:artist).uniq
   end
