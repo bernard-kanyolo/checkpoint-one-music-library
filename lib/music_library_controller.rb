@@ -1,17 +1,17 @@
 class MusicLibraryController
-  def initialize(path = "./db/mp3s")
+  def initialize(path = './db/mp3s')
     MusicImporter.new(path).import
     @view = MusicLibraryView.new
   end
 
-  COMMANDS = { "list songs" => :list_songs,
-               "list artists" => :list_artists,
-               "list genres" => :list_genres,
-               "play song" => :play_song,
-               "list artist" => :list_artist,
-               "list genre" => :list_genre,
-               "help" => :help,
-               "exit" => :exit }
+  COMMANDS = { 'list songs' => :list_songs,
+               'list artists' => :list_artists,
+               'list genres' => :list_genres,
+               'play song' => :play_song,
+               'list artist' => :list_artist,
+               'list genre' => :list_genre,
+               'help' => :help,
+               'exit' => :exit }
   COMMANDS.default = :input_error
 
   def call
@@ -21,16 +21,14 @@ class MusicLibraryController
   end
 
   def input
-    begin
-      command = nil
-      until command == "exit"
-        @view.prompt
-        command = gets.chomp.strip.downcase
-        send(COMMANDS[command])
-      end
-    rescue Interrupt
-      @view.exit
+    command = nil
+    until command == 'exit'
+      @view.prompt
+      command = gets.chomp.strip.downcase
+      send(COMMANDS[command])
     end
+  rescue Interrupt
+    @view.exit
   end
 
   def list_songs
@@ -61,7 +59,7 @@ class MusicLibraryController
     elsif (1..Song.all.length).cover?(num)
       @view.list_song(Song.all[num - 1], :playing)
     else
-      @view.input_error(:exist, "song")
+      @view.input_error(:exist, 'song')
     end
   end
 
@@ -71,7 +69,7 @@ class MusicLibraryController
     if artist
       artist.songs.each { |song| @view.list_song(song) }
     else
-      @view.input_error(:exist, "artist")
+      @view.input_error(:exist, 'artist')
     end
   end
 
@@ -81,7 +79,7 @@ class MusicLibraryController
     if genre
       genre.songs.each { |song| @view.list_song(song) }
     else
-      @view.input_error(:exist, "genre")
+      @view.input_error(:exist, 'genre')
     end
   end
 
